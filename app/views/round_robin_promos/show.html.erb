@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Position:</b>
+  <%= @round_robin_promo.position %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @round_robin_promo.duration %>
+</p>
+
+<p>
+  <b>App:</b>
+  <%= @round_robin_promo.app_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_round_robin_promo_path(@round_robin_promo) %> |
+<%= link_to 'Back', round_robin_promos_path %>

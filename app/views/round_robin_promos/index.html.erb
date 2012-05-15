@@ -1,0 +1,28 @@
+<h1>Listing round_robin_promos</h1>
+
+<table>
+  <tr>
+    <th>Position</th>
+    <th>Duration</th>
+    <th>app id</th>
+    <th>promo.id</th>
+    <th></th>
+  </tr>
+
+<% @round_robin_promos.each do |round_robin_promo| %>
+  <tr>
+    <td><%= round_robin_promo.position %></td>
+    <td><%= round_robin_promo.duration %></td>
+    <td><%= round_robin_promo.app.name %></td>
+    <td><%= round_robin_promo.promo.name %></td>
+    
+    <td><%= link_to 'Show', round_robin_promo %></td>
+    <td><%= link_to 'Edit', edit_round_robin_promo_path(round_robin_promo) %></td>
+    <td><%= link_to 'Destroy', round_robin_promo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Round robin promo', new_round_robin_promo_path %>

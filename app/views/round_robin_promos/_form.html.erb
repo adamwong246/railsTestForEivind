@@ -1,0 +1,39 @@
+<%= form_for(@round_robin_promo) do |f| %>
+  <% if @round_robin_promo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@round_robin_promo.errors.count, "error") %> prohibited this round_robin_promo from being saved:</h2>
+
+      <ul>
+      <% @round_robin_promo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.number_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+
+  <div class="field">
+    <%= f.label :app %>
+    <% @apps = App.find(:all, :order => "name") %>
+    <%= f.collection_select :app_id, @apps, :id, :name %>
+    
+
+  </div>
+
+  <div class="field">
+    <%= f.label :promo %>
+    <%= f.collection_select :promo_id, Promo.all, :id, :name %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

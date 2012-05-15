@@ -1,0 +1,23 @@
+<h1>Listing promos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @promos.each do |promo| %>
+  <tr>
+    <td><%= promo.name %></td>
+    <td><%= link_to 'Show', promo %></td>
+    <td><%= link_to 'Edit', edit_promo_path(promo) %></td>
+    <td><%= link_to 'Destroy', promo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Promo', new_promo_path %>
