@@ -1,0 +1,2 @@
+module SchedulePromosHelper
+end

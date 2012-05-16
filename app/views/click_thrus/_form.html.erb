@@ -1,0 +1,25 @@
+<%= form_for(@click_thru) do |f| %>
+  <% if @click_thru.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@click_thru.errors.count, "error") %> prohibited this click_thru from being saved:</h2>
+
+      <ul>
+      <% @click_thru.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_area :url %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br />
+    <%= f.datetime_select :time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

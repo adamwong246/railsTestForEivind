@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%= @page_view.url %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @page_view.time %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_view_path(@page_view) %> |
+<%= link_to 'Back', page_views_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start time:</b>
+  <%= @schedule_promo.start_time %>
+</p>
+
+<p>
+  <b>Stop time:</b>
+  <%= @schedule_promo.stop_time %>
+</p>
+
+<p>
+  <b>App:</b>
+  <%= @schedule_promo.app_id %>
+</p>
+
+<p>
+  <b>Promo:</b>
+  <%= @schedule_promo.promo_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_schedule_promo_path(@schedule_promo) %> |
+<%= link_to 'Back', schedule_promos_path %>

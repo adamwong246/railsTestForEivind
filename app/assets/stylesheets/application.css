@@ -11,3 +11,17 @@
  *= require_self
  *= require_tree .
 */
+.past
+{
+color:red;
+}
+
+.present
+{
+color:blue;
+}
+
+.future
+{
+color:green;
+}

@@ -1,0 +1,2 @@
+module ClickThrusHelper
+end

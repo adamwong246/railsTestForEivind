@@ -1,0 +1,8 @@
+<% if @schedule_promo == nil %>
+No promotion was found
+<% else %>
+This would be a promotion for the app <b> <%= @schedule_promo.app.name %> </b>
+<p> rendered in the style of promo <b> <%= @schedule_promo.promo.name %> </b>
+<%end%>
+
+<p> <%= link_to 'Click thru to the app promoted', :controller => :click_thrus, :action => :clicked %>

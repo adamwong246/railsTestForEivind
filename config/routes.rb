@@ -1,4 +1,18 @@
 RailsTest::Application.routes.draw do
+
+  match 'click_thrus/clicked'
+  resources :click_thrus
+
+  resources :page_views
+
+  match 'schedule_promos/populate'
+  match 'schedule_promos/clear_future'
+  match 'schedule_promos/clear_all'
+  match 'schedule_promos/more_games'
+   
+  resources :schedule_promos
+  
+
   resources :round_robin_promos
 
   resources :promos

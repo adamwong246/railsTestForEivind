@@ -1,0 +1,49 @@
+<h1>Listing schedule_promos</h1>
+<h2>The current unix timestamp is <%= currentTime = Time.now.to_i %></h2>
+<h3 class = "past">Promotions of the past</h3>
+<h3 class = "present">Promotion of the present. </h3>
+<h3 class = "future">Promotions yet to come</h3>
+
+<table>
+  <tr>
+    <th>Start time</th>
+    <th>Stop time</th>
+    <th>App</th>
+    <th>Promo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @schedule_promos.each do |schedule_promo| %>
+
+    <% if (currentTime >= schedule_promo.start_time) %>
+    <% cssClass = "past" %>
+    <% elsif (currentTime.between?(schedule_promo.start_time, schedule_promo.stop_time)) %>
+    <% cssClass = "present" %>
+    <% else %>
+    <% cssClass = "future" %>
+    <% end %>
+
+    
+  <tr class = "<%= cssClass %>">
+
+
+    
+    <td ><%= schedule_promo.start_time %></td>
+    <td><%= schedule_promo.stop_time %></td>
+    <td><%= schedule_promo.app.name %></td>
+    <td><%= schedule_promo.promo.name %></td>
+    <td><%= link_to 'Show', schedule_promo %></td>
+    <td><%= link_to 'Edit', edit_schedule_promo_path(schedule_promo) %></td>
+    <td><%= link_to 'Destroy', schedule_promo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Schedule promo', new_schedule_promo_path %>
+</p><%= link_to 'Clear the future schedule', :controller => "schedule_promos", :action => "clear_future" %>
+</p><%= link_to 'Clear all', :controller => "schedule_promos", :action => "clear_all" %>
+</p><%= link_to 'Populate the schedule', :controller => "schedule_promos", :action => "populate" %>

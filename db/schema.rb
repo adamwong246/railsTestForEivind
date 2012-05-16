@@ -11,10 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515104508) do
+ActiveRecord::Schema.define(:version => 20120516191240) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "click_thrus", :force => true do |t|
+    t.text     "url"
+    t.datetime "time"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "page_views", :force => true do |t|
+    t.text     "url"
+    t.datetime "time"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -36,5 +50,14 @@ ActiveRecord::Schema.define(:version => 20120515104508) do
 
   add_index "round_robin_promos", ["app_id"], :name => "index_round_robin_promos_on_app_id"
   add_index "round_robin_promos", ["promo_id"], :name => "index_round_robin_promos_on_promo_id"
+
+  create_table "schedule_promos", :force => true do |t|
+    t.datetime "start_time"
+    t.datetime "stop_time"
+    t.integer  "app_id"
+    t.integer  "promo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
