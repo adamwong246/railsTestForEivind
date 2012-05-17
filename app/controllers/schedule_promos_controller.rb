@@ -1,4 +1,6 @@
 class SchedulePromosController < ApplicationController
+
+  protect_from_forgery :except => :populate
   # GET /schedule_promos
   # GET /schedule_promos.json
   def index
@@ -13,7 +15,7 @@ class SchedulePromosController < ApplicationController
   def more_games
      @schedule_promo = SchedulePromo.find(:last, :order => "start_time ASC", :conditions => ['start_time < ? AND stop_time > ?', Time.now.to_i, Time.now.to_i])
 
-    @page_view = PageView.new(:url => "somwhere over the rainbw", :time => Time.now.to_i)
+    @page_view = PageView.new(:url => "http://#{request.host}:#{request.port}#{request.fullpath}", :time => Time.now.to_i)
     @page_view.save()
     
     #@schedule_promo = SchedulePromo.find(:last, :order => "start_time ASC")
@@ -46,13 +48,16 @@ class SchedulePromosController < ApplicationController
   def populate
 
     time = Time.now.to_i
+    projectedFuture = time + (5 *60)
     
     @round_robin = RoundRobinPromo.find(:all, :order => "position")
-    puts @round_robin.inspect
+
+    while(time < projectedFuture){
     @round_robin.each { |elem|
       @schedule_promo = SchedulePromo.new(:app_id => elem.app_id, :promo_id => elem.promo_id, :start_time => time, :stop_time => time + elem.duration)
       time = @schedule_promo.stop_time
       @schedule_promo.save()
+    }
     }
 
     redirect_to :action => "index"
