@@ -7,7 +7,8 @@ gem 'rails', '3.2.3.rc2'
 
 gem 'sqlite3'
 gem 'clockwork'
-gem 'delayed_job', '2.0.3'
+gem 'whenever'
+#gem 'delayed_job', '2.0.3'
 
 # Gems used only for assets and not required
 # in production environments by default.

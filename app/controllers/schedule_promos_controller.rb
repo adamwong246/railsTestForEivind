@@ -52,13 +52,13 @@ class SchedulePromosController < ApplicationController
     
     @round_robin = RoundRobinPromo.find(:all, :order => "position")
 
-    while(time < projectedFuture){
+    while(time < projectedFuture)
     @round_robin.each { |elem|
       @schedule_promo = SchedulePromo.new(:app_id => elem.app_id, :promo_id => elem.promo_id, :start_time => time, :stop_time => time + elem.duration)
       time = @schedule_promo.stop_time
       @schedule_promo.save()
     }
-    }
+    end
 
     redirect_to :action => "index"
 
